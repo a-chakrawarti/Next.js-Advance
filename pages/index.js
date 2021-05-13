@@ -2,10 +2,19 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+// should be available only on the local system, production
+// overrides other .env
+// .env.local
+
+// whatever can be placed in version control
+// .env.development
+// .env.production
+
 export const getServerSideProps = (context) => {
   // runs before the server gets start, every time you change env variable you
   // will have to restart the server
   console.log(process.env.SECRET_VARIABLE);
+  console.log("API_VALUE: ", process.env.API_VALUE); // returns local.env value
   return {
     props: {},
   };
