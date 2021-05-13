@@ -16,23 +16,38 @@
 // locally it will run every single time
 // likes to run this on build time
 
-import { GetStaticPaths } from "next";
+import dynamic from "next/dynamic";
+
+// const ActivePanel = dynamic(() => import("./active"));
+// const NotActivePanel = dynamic(() => import("./not_active"));
+// import ActivePanel from "./active";
+// import NotActivePanel from "./not_active";
 export function getStaticProps(context) {
   console.log(context);
   return {
-    props: { count: 10 },
+    props: { count: Math.random() },
     revalidate: 10, // seconds: this will try to recreate this page in atmost 10 seconds
   };
 }
 
-export const getStaticPaths = () => {
-  return {
-    paths: [{ params: {} }, { params: {} }], // will be build ahead of time (BUILD TIME)
-  };
-};
+// export const getStaticPaths = () => {
+//   return {
+//     fallback: "blocking",
+//     paths: [{ params: {} }, { params: {} }], // will be build ahead of time (BUILD TIME)
+//   };
+// };
 
 const Practice = (props) => {
-  return <div>Practice Site {props.count}</div>;
+  // if (props.count > 0.5) {
+  //   return <NotActivePanel />;
+  // }
+
+  return (
+    <div>
+      Practice Site {props.count}
+      {/* <ActivePanel /> */}
+    </div>
+  );
 };
 
 export default Practice;
