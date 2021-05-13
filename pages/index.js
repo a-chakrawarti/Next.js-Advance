@@ -15,6 +15,7 @@ export const getServerSideProps = (context) => {
   // will have to restart the server
   console.log(process.env.SECRET_VARIABLE);
   console.log("API_VALUE: ", process.env.API_VALUE); // returns local.env value
+  console.log(context);
   return {
     props: {},
   };
